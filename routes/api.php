@@ -3,6 +3,10 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\KomunitasController;
+use App\Http\Controllers\RuanganController;
+use App\Http\Controllers\PemesananController;
+
 
 Route::prefix('auth')->group(function () {
     // Komunitas routes
@@ -19,6 +23,25 @@ Route::prefix('auth')->group(function () {
     });
 });
 
+Route::middleware('auth:sanctum')->prefix('komunitas')->group(function () {
+    Route::get('/', [KomunitasController::class, 'index']);
+    Route::get('/{id}', [KomunitasController::class, 'show']);
+});
+
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
+});
+Route::middleware('auth:sanctum')->prefix('ruangan')->group(function () {
+    Route::get('/', [RuanganController::class, 'index']);
+    Route::get('/{id}', [RuanganController::class, 'show']);
+});
+
+Route::middleware('auth:sanctum')->prefix('pemesanan')->group(function () {
+    Route::get('/', [PemesananController::class, 'index']);
+    Route::post('/', [PemesananController::class, 'store']);
+    
+    // Hanya admin yang bisa update status
+    Route::middleware('can:admin')->group(function () {
+        Route::put('/{id}/status', [PemesananController::class, 'updateStatus']);
+    });
 });
