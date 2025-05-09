@@ -26,6 +26,8 @@ Route::prefix('auth')->group(function () {
 Route::middleware('auth:sanctum')->prefix('komunitas')->group(function () {
     Route::get('/', [KomunitasController::class, 'index']);
     Route::get('/{id}', [KomunitasController::class, 'show']);
+    Route::put('/{id}', [KomunitasController::class, 'update']);
+
 });
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
