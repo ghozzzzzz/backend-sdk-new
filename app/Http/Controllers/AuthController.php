@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules\Password;
+use App\Models\Anggota;
 
 class AuthController extends Controller
 {
@@ -152,6 +153,22 @@ public function adminRegister(Request $request)
     ], 201);
 }
 
+// AuthController.php
+public function getAnggotaKomunitas(Request $request)
+{
+    $user = $request->user();
+    
+    if (!$user instanceof Komunitas) {
+        return response()->json(['message' => 'Unauthorized'], 403);
+    }
+
+    $anggota = Anggota::where('id_komunitas', $user->id_komunitas)->get();
+    
+    return response()->json([
+        'data' => $anggota,
+        'message' => 'Berhasil mengambil data anggota'
+    ]);
+}
     // Logout untuk semua guard
     public function logout(Request $request)
     {

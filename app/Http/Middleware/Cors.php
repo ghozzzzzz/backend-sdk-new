@@ -12,6 +12,7 @@ class Cors
         // Daftar origin yang diizinkan
         $allowedOrigins = [
             'http://localhost:5173',
+             'http://127.0.0.1:5173',
             'http://localhost:8000',
             // Tambahkan origin lainnya jika diperlukan
         ];

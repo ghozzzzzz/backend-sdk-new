@@ -31,4 +31,9 @@ class Komunitas extends Authenticatable
     protected $casts = [
         'password' => 'hashed',
     ];
+
+    public function anggota()
+    {
+        return $this->hasMany(Anggota::class, 'id_komunitas', 'id_komunitas');
+    }
 }

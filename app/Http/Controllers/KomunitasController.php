@@ -16,14 +16,56 @@ class KomunitasController extends Controller  // Pastikan extends Controller
     }
 
     // Get semua data komunitas
-    public function index()
-    {
-        $komunitas = Komunitas::all();
-        return response()->json([
-            'data' => $komunitas,
-            'message' => 'Berhasil mengambil data komunitas'
-        ]);
+    public function index(Request $request)
+{
+    if ($request->user()->role !== 'admin') {
+        return response()->json(['message' => 'Forbidden'], 403);
     }
+
+    $komunitas = Komunitas::all();
+    return response()->json([
+        'data' => $komunitas,
+        'message' => 'Berhasil mengambil data komunitas'
+    ]);
+}
+public function store(Request $request)
+{
+    if ($request->user()->role !== 'admin') {
+        return response()->json(['message' => 'Forbidden'], 403);
+    }
+
+    $validated = $request->validate([
+        'nama_komunitas' => 'required|string|max:255',
+        'koordinator' => 'required|string|max:255',
+        'telepon' => 'required|string|max:20|unique:komunitas',
+        'email_komunitas' => 'required|email|unique:komunitas',
+        'jumlah_anggota' => 'required|integer|min:1',
+        'password' => ['required', 'confirmed', Password::min(8)]
+    ]);
+
+    $validated['password'] = Hash::make($validated['password']);
+
+    $komunitas = Komunitas::create($validated);
+
+    return response()->json([
+        'data' => $komunitas,
+        'message' => 'Komunitas created successfully'
+    ], 201);
+}
+
+public function destroy(Request $request, $id)
+{
+    if ($request->user()->role !== 'admin') {
+        return response()->json(['message' => 'Forbidden'], 403);
+    }
+
+    $komunitas = Komunitas::findOrFail($id);
+    $komunitas->delete();
+
+    return response()->json([
+        'message' => 'Komunitas deleted successfully'
+    ]);
+}
 public function update(Request $request, $id)
 {
     $komunitas = Komunitas::findOrFail($id);
