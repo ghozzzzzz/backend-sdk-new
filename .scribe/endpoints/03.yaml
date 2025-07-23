@@ -1,0 +1,125 @@
+name: 'Manajemen Ruangan'
+description: |-
+
+  Endpoint untuk melihat data ruangan yang tersedia.
+endpoints:
+  -
+    httpMethods:
+      - GET
+    uri: api/ruangan
+    metadata:
+      groupName: 'Manajemen Ruangan'
+      groupDescription: |-
+
+        Endpoint untuk melihat data ruangan yang tersedia.
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Ambil semua data ruangan'
+      description: 'Menampilkan daftar semua ruangan yang tersedia.'
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+            "data": [
+              {
+                "id": 1,
+                "nama_ruangan": "Aula 1",
+                "lokasi": "Lantai 1",
+                "kapasitas_min": 10,
+                "kapasitas_max": 100,
+                ...
+              }
+            ],
+            "message": "Berhasil mengambil data ruangan"
+          }
+        headers: []
+        description: ''
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - GET
+    uri: 'api/ruangan/{id}'
+    metadata:
+      groupName: 'Manajemen Ruangan'
+      groupDescription: |-
+
+        Endpoint untuk melihat data ruangan yang tersedia.
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Ambil detail ruangan berdasarkan ID'
+      description: 'Menampilkan informasi detail satu ruangan berdasarkan ID-nya.'
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: 'ID ruangan yang ingin diambil. Contoh: 1'
+        required: true
+        example: 16
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+    cleanUrlParameters:
+      id: 16
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+            "data": {
+              "id": 1,
+              "nama_ruangan": "Aula 1",
+              "lokasi": "Lantai 1",
+              "kapasitas_min": 10,
+              "kapasitas_max": 100,
+              ...
+            },
+            "message": "Berhasil mengambil detail ruangan"
+          }
+        headers: []
+        description: ''
+        custom: []
+      -
+        status: 404
+        content: |-
+          {
+            "message": "Ruangan tidak ditemukan"
+          }
+        headers: []
+        description: ''
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []

@@ -57,4 +57,5 @@ Route::middleware('auth:sanctum')->prefix('anggota')->group(function () {
     Route::get('/{id}', [AnggotaController::class, 'show']);
     Route::put('/{id}', [AnggotaController::class, 'update']);
     Route::delete('/{id}', [AnggotaController::class, 'destroy']);
+    Route::get('/by-komunitas/{id}', [AnggotaController::class, 'getByKomunitas']);
 });

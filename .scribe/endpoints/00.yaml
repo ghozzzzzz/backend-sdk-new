@@ -1,0 +1,414 @@
+name: Autentikasi
+description: |-
+
+  Endpoint untuk login, register, logout dan akses data berbasis token untuk admin dan komunitas.
+endpoints:
+  -
+    httpMethods:
+      - POST
+    uri: api/auth/komunitas/register
+    metadata:
+      groupName: Autentikasi
+      groupDescription: |-
+
+        Endpoint untuk login, register, logout dan akses data berbasis token untuk admin dan komunitas.
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Register Komunitas'
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      nama_komunitas:
+        name: nama_komunitas
+        description: 'Nama komunitas'
+        required: true
+        example: architecto
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      tipe:
+        name: tipe
+        description: 'Tipe komunitas'
+        required: true
+        example: architecto
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      koordinator:
+        name: koordinator
+        description: 'Nama koordinator'
+        required: true
+        example: architecto
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      telepon:
+        name: telepon
+        description: 'Nomor telepon unik'
+        required: true
+        example: architecto
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      email_komunitas:
+        name: email_komunitas
+        description: 'Email unik'
+        required: true
+        example: architecto
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      jumlah_anggota:
+        name: jumlah_anggota
+        description: 'Jumlah anggota minimal 1'
+        required: true
+        example: 16
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      password:
+        name: password
+        description: Password
+        required: true
+        example: '|]|{+-'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      password_confirmation:
+        name: password_confirmation
+        description: 'Konfirmasi password'
+        required: true
+        example: architecto
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+    cleanBodyParameters:
+      nama_komunitas: architecto
+      tipe: architecto
+      koordinator: architecto
+      telepon: architecto
+      email_komunitas: architecto
+      jumlah_anggota: 16
+      password: '|]|{+-'
+      password_confirmation: architecto
+    fileParameters: []
+    responses:
+      -
+        status: 201
+        content: |-
+          {
+           "access_token": "...",
+           "token_type": "Bearer",
+           "komunitas": {...}
+          }
+        headers: []
+        description: ''
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - POST
+    uri: api/auth/komunitas/login
+    metadata:
+      groupName: Autentikasi
+      groupDescription: |-
+
+        Endpoint untuk login, register, logout dan akses data berbasis token untuk admin dan komunitas.
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Login Komunitas (API)'
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      login:
+        name: login
+        description: 'Email atau telepon komunitas.'
+        required: true
+        example: architecto
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      password:
+        name: password
+        description: Password.
+        required: true
+        example: '|]|{+-'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+    cleanBodyParameters:
+      login: architecto
+      password: '|]|{+-'
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+           "access_token": "1|abc123...",
+           "token_type": "Bearer",
+           "komunitas": {...}
+          }
+        headers: []
+        description: ''
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - POST
+    uri: api/auth/admin/register
+    metadata:
+      groupName: Autentikasi
+      groupDescription: |-
+
+        Endpoint untuk login, register, logout dan akses data berbasis token untuk admin dan komunitas.
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Register Admin'
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      name:
+        name: name
+        description: 'Nama admin'
+        required: true
+        example: architecto
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      email:
+        name: email
+        description: 'Email unik'
+        required: true
+        example: gbailey@example.net
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      password:
+        name: password
+        description: Password
+        required: true
+        example: '|]|{+-'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      role:
+        name: role
+        description: 'Role admin/user (default user)'
+        required: false
+        example: architecto
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      password_confirmation:
+        name: password_confirmation
+        description: 'Konfirmasi password'
+        required: true
+        example: architecto
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+    cleanBodyParameters:
+      name: architecto
+      email: gbailey@example.net
+      password: '|]|{+-'
+      role: architecto
+      password_confirmation: architecto
+    fileParameters: []
+    responses:
+      -
+        status: 201
+        content: |-
+          {
+           "access_token": "...",
+           "token_type": "Bearer",
+           "user": {...}
+          }
+        headers: []
+        description: ''
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - POST
+    uri: api/auth/admin/login
+    metadata:
+      groupName: Autentikasi
+      groupDescription: |-
+
+        Endpoint untuk login, register, logout dan akses data berbasis token untuk admin dan komunitas.
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Login Admin'
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      email:
+        name: email
+        description: 'Email admin. Contoh: admin@example.com'
+        required: true
+        example: gbailey@example.net
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      password:
+        name: password
+        description: 'Password admin.'
+        required: true
+        example: '|]|{+-'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+    cleanBodyParameters:
+      email: gbailey@example.net
+      password: '|]|{+-'
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+           "access_token": "1|xyz123...",
+           "token_type": "Bearer",
+           "user": {...}
+          }
+        headers: []
+        description: ''
+        custom: []
+      -
+        status: 403
+        content: |-
+          {
+           "message": "Forbidden"
+          }
+        headers: []
+        description: ''
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - POST
+    uri: api/auth/logout
+    metadata:
+      groupName: Autentikasi
+      groupDescription: |-
+
+        Endpoint untuk login, register, logout dan akses data berbasis token untuk admin dan komunitas.
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Logout user saat ini'
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+           "message": "Logged out successfully"
+          }
+        headers: []
+        description: ''
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []

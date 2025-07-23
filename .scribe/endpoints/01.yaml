@@ -1,0 +1,456 @@
+name: 'Manajemen Komunitas'
+description: |-
+
+  Endpoint untuk mengelola data komunitas (CRUD).
+  Akses dibatasi hanya untuk admin atau komunitas yang sesuai.
+endpoints:
+  -
+    httpMethods:
+      - GET
+    uri: api/komunitas
+    metadata:
+      groupName: 'Manajemen Komunitas'
+      groupDescription: |-
+
+        Endpoint untuk mengelola data komunitas (CRUD).
+        Akses dibatasi hanya untuk admin atau komunitas yang sesuai.
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Ambil semua data komunitas'
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+           "data": [...],
+           "message": "Berhasil mengambil data komunitas"
+          }
+        headers: []
+        description: ''
+        custom: []
+      -
+        status: 403
+        content: |-
+          {
+           "message": "Forbidden"
+          }
+        headers: []
+        description: ''
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - POST
+    uri: api/komunitas
+    metadata:
+      groupName: 'Manajemen Komunitas'
+      groupDescription: |-
+
+        Endpoint untuk mengelola data komunitas (CRUD).
+        Akses dibatasi hanya untuk admin atau komunitas yang sesuai.
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Tambah komunitas baru'
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      nama_komunitas:
+        name: nama_komunitas
+        description: 'Nama komunitas'
+        required: true
+        example: architecto
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      koordinator:
+        name: koordinator
+        description: 'Nama koordinator'
+        required: true
+        example: architecto
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      telepon:
+        name: telepon
+        description: 'Nomor telepon komunitas (unik)'
+        required: true
+        example: architecto
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      email_komunitas:
+        name: email_komunitas
+        description: 'Email komunitas (unik)'
+        required: true
+        example: architecto
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      jumlah_anggota:
+        name: jumlah_anggota
+        description: 'Minimal 1'
+        required: true
+        example: 16
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      password:
+        name: password
+        description: 'Minimal 8 karakter'
+        required: true
+        example: '|]|{+-'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      password_confirmation:
+        name: password_confirmation
+        description: 'Konfirmasi password'
+        required: true
+        example: architecto
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+    cleanBodyParameters:
+      nama_komunitas: architecto
+      koordinator: architecto
+      telepon: architecto
+      email_komunitas: architecto
+      jumlah_anggota: 16
+      password: '|]|{+-'
+      password_confirmation: architecto
+    fileParameters: []
+    responses:
+      -
+        status: 201
+        content: |-
+          {
+           "data": {...},
+           "message": "Komunitas created successfully"
+          }
+        headers: []
+        description: ''
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - GET
+    uri: 'api/komunitas/{id}'
+    metadata:
+      groupName: 'Manajemen Komunitas'
+      groupDescription: |-
+
+        Endpoint untuk mengelola data komunitas (CRUD).
+        Akses dibatasi hanya untuk admin atau komunitas yang sesuai.
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Ambil detail komunitas'
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: 'ID komunitas'
+        required: true
+        example: 16
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+    cleanUrlParameters:
+      id: 16
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+           "success": true,
+           "data": {...},
+           "message": "Berhasil mengambil detail komunitas"
+          }
+        headers: []
+        description: ''
+        custom: []
+      -
+        status: 404
+        content: |-
+          {
+           "success": false,
+           "message": "Komunitas tidak ditemukan"
+          }
+        headers: []
+        description: ''
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - PUT
+    uri: 'api/komunitas/{id}'
+    metadata:
+      groupName: 'Manajemen Komunitas'
+      groupDescription: |-
+
+        Endpoint untuk mengelola data komunitas (CRUD).
+        Akses dibatasi hanya untuk admin atau komunitas yang sesuai.
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Perbarui data komunitas'
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: 'ID komunitas'
+        required: true
+        example: 16
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+    cleanUrlParameters:
+      id: 16
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      nama_komunitas:
+        name: nama_komunitas
+        description: 'Nama komunitas'
+        required: false
+        example: architecto
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      tipe:
+        name: tipe
+        description: 'Tipe komunitas'
+        required: false
+        example: architecto
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      koordinator:
+        name: koordinator
+        description: 'Nama koordinator'
+        required: false
+        example: architecto
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      telepon:
+        name: telepon
+        description: 'Nomor telepon unik'
+        required: false
+        example: architecto
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      email_komunitas:
+        name: email_komunitas
+        description: 'Email komunitas'
+        required: false
+        example: architecto
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      jumlah_anggota:
+        name: jumlah_anggota
+        description: 'Jumlah anggota'
+        required: false
+        example: 16
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      password:
+        name: password
+        description: 'Password baru (optional)'
+        required: false
+        example: '|]|{+-'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      password_confirmation:
+        name: password_confirmation
+        description: 'Konfirmasi password'
+        required: false
+        example: architecto
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+    cleanBodyParameters:
+      nama_komunitas: architecto
+      tipe: architecto
+      koordinator: architecto
+      telepon: architecto
+      email_komunitas: architecto
+      jumlah_anggota: 16
+      password: '|]|{+-'
+      password_confirmation: architecto
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+           "data": {...},
+           "message": "Data komunitas berhasil diperbarui"
+          }
+        headers: []
+        description: ''
+        custom: []
+      -
+        status: 403
+        content: |-
+          {
+           "message": "Unauthorized"
+          }
+        headers: []
+        description: ''
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - DELETE
+    uri: 'api/komunitas/{id}'
+    metadata:
+      groupName: 'Manajemen Komunitas'
+      groupDescription: |-
+
+        Endpoint untuk mengelola data komunitas (CRUD).
+        Akses dibatasi hanya untuk admin atau komunitas yang sesuai.
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Hapus komunitas'
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: 'ID komunitas. Contoh: 1'
+        required: true
+        example: 16
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+    cleanUrlParameters:
+      id: 16
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+           "message": "Komunitas deleted successfully"
+          }
+        headers: []
+        description: ''
+        custom: []
+      -
+        status: 403
+        content: |-
+          {
+           "message": "Forbidden"
+          }
+        headers: []
+        description: ''
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []

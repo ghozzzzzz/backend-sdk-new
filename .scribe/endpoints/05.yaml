@@ -1,0 +1,403 @@
+name: Anggota
+description: |-
+
+  API untuk mengelola data anggota komunitas. Hanya admin yang bisa mengakses endpoint ini.
+endpoints:
+  -
+    httpMethods:
+      - GET
+    uri: api/anggota
+    metadata:
+      groupName: Anggota
+      groupDescription: |-
+
+        API untuk mengelola data anggota komunitas. Hanya admin yang bisa mengakses endpoint ini.
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Ambil semua data anggota'
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+            "data": [
+              {
+                "id": 1,
+                "nama": "Budi",
+                "no_telepon": "081234567890",
+                "email": "budi@example.com",
+                "id_komunitas": 1,
+                "created_at": "2025-07-08T00:00:00.000000Z",
+                "updated_at": "2025-07-08T00:00:00.000000Z"
+              }
+            ],
+            "message": "Berhasil mengambil data anggota"
+          }
+        headers: []
+        description: ''
+        custom: []
+      -
+        status: 403
+        content: |-
+          {
+            "message": "Unauthorized"
+          }
+        headers: []
+        description: ''
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - POST
+    uri: api/anggota
+    metadata:
+      groupName: Anggota
+      groupDescription: |-
+
+        API untuk mengelola data anggota komunitas. Hanya admin yang bisa mengakses endpoint ini.
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Tambah anggota baru'
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      nama:
+        name: nama
+        description: 'Nama anggota. Contoh: Budi'
+        required: true
+        example: architecto
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      no_telepon:
+        name: no_telepon
+        description: 'Nomor telepon unik. Contoh: 081234567890'
+        required: true
+        example: architecto
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      email:
+        name: email
+        description: 'Email unik. Contoh: budi@example.com'
+        required: true
+        example: gbailey@example.net
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      id_komunitas:
+        name: id_komunitas
+        description: 'ID komunitas. Contoh: 1'
+        required: true
+        example: 16
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+    cleanBodyParameters:
+      nama: architecto
+      no_telepon: architecto
+      email: gbailey@example.net
+      id_komunitas: 16
+    fileParameters: []
+    responses:
+      -
+        status: 201
+        content: |-
+          {
+            "data": {
+              "id": 1,
+              "nama": "Budi",
+              "no_telepon": "081234567890",
+              "email": "budi@example.com",
+              "id_komunitas": 1,
+              "created_at": "2025-07-08T00:00:00.000000Z",
+              "updated_at": "2025-07-08T00:00:00.000000Z"
+            },
+            "message": "Anggota berhasil ditambahkan"
+          }
+        headers: []
+        description: ''
+        custom: []
+      -
+        status: 422
+        content: |-
+          {
+            "email": [
+              "The email has already been taken."
+            ]
+          }
+        headers: []
+        description: ''
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - GET
+    uri: 'api/anggota/{id}'
+    metadata:
+      groupName: Anggota
+      groupDescription: |-
+
+        API untuk mengelola data anggota komunitas. Hanya admin yang bisa mengakses endpoint ini.
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Lihat detail anggota berdasarkan ID'
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: 'ID anggota. Contoh: 1'
+        required: true
+        example: 16
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+    cleanUrlParameters:
+      id: 16
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+            "data": {
+              "id": 1,
+              "nama": "Budi",
+              "no_telepon": "081234567890",
+              "email": "budi@example.com",
+              "id_komunitas": 1
+            },
+            "message": "Berhasil mengambil detail anggota"
+          }
+        headers: []
+        description: ''
+        custom: []
+      -
+        status: 404
+        content: |-
+          {
+            "message": "Anggota tidak ditemukan"
+          }
+        headers: []
+        description: ''
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - PUT
+    uri: 'api/anggota/{id}'
+    metadata:
+      groupName: Anggota
+      groupDescription: |-
+
+        API untuk mengelola data anggota komunitas. Hanya admin yang bisa mengakses endpoint ini.
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Update anggota'
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: 'ID anggota. Contoh: 1'
+        required: true
+        example: 16
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+    cleanUrlParameters:
+      id: 16
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      nama:
+        name: nama
+        description: 'Nama anggota. Contoh: Budi'
+        required: false
+        example: architecto
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      no_telepon:
+        name: no_telepon
+        description: 'Nomor telepon unik. Contoh: 081234567891'
+        required: false
+        example: architecto
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      email:
+        name: email
+        description: 'Email unik. Contoh: budi_new@example.com'
+        required: false
+        example: gbailey@example.net
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      id_komunitas:
+        name: id_komunitas
+        description: 'ID komunitas. Contoh: 2'
+        required: false
+        example: 16
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+    cleanBodyParameters:
+      nama: architecto
+      no_telepon: architecto
+      email: gbailey@example.net
+      id_komunitas: 16
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+            "data": {
+              "id": 1,
+              "nama": "Budi",
+              "no_telepon": "081234567891",
+              "email": "budi_new@example.com",
+              "id_komunitas": 2
+            },
+            "message": "Anggota berhasil diperbarui"
+          }
+        headers: []
+        description: ''
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - DELETE
+    uri: 'api/anggota/{id}'
+    metadata:
+      groupName: Anggota
+      groupDescription: |-
+
+        API untuk mengelola data anggota komunitas. Hanya admin yang bisa mengakses endpoint ini.
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Hapus anggota'
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: 'ID anggota. Contoh: 1'
+        required: true
+        example: 16
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+    cleanUrlParameters:
+      id: 16
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+            "message": "Anggota berhasil dihapus"
+          }
+        headers: []
+        description: ''
+        custom: []
+      -
+        status: 404
+        content: |-
+          {
+            "message": "Anggota tidak ditemukan"
+          }
+        headers: []
+        description: ''
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
